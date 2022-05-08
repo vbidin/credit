@@ -1,0 +1,6 @@
+# Foundry
+cache/
+output/
+
+# MacOS
+.DS_Store
