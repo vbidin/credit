@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-# TODO: use solhint here?
+solhint -c configs/solhint.json 'contracts/**/*.sol' 'tests/**/*.sol'
