@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-# TODO: setup prettier and the solidity plugin
+prettier --config configs/prettier.json --ignore-path configs/prettierignore --write .

@@ -7,14 +7,8 @@
         "avoid-throw": "warn",
         "avoid-tx-origin": "warn",
         "check-send-result": "warn",
-        "code-complexity": [
-            "warn",
-            5
-        ],
-        "compiler-version": [
-            "warn",
-            "^0.8.0"
-        ],
+        "code-complexity": ["warn", 5],
+        "compiler-version": ["warn", "^0.8.0"],
         "comprehensive-interface": "off",
         "const-name-snakecase": "warn",
         "constructor-syntax": "warn",
@@ -23,26 +17,12 @@
         "func-name-mixedcase": "warn",
         "func-order": "off",
         "func-param-name-mixedcase": "warn",
-        "func-visibility": [
-            "warn",
-            {
-                "ignoreConstructors": true
-            }
-        ],
-        "function-max-lines": [
-            "warn",
-            30
-        ],
+        "func-visibility": ["warn", { "ignoreConstructors": true }],
+        "function-max-lines": ["warn", 30],
         "imports-on-top": "warn",
         "mark-callable-contracts": "off",
-        "max-line-length": [
-            "warn",
-            140
-        ],
-        "max-states-count": [
-            "warn",
-            10
-        ],
+        "max-line-length": ["warn", 160],
+        "max-states-count": ["warn", 10],
         "modifier-name-mixedcase": "warn",
         "multiple-sends": "warn",
         "no-complex-fallback": "warn",
@@ -53,22 +33,9 @@
         "not-rely-on-time": "warn",
         "ordering": "warn",
         "payable-fallback": "warn",
-        "private-vars-leading-underscore": [
-            "warn",
-            {
-                "strict": true
-            }
-        ],
-        "quotes": [
-            "warn",
-            "double"
-        ],
-        "reason-string": [
-            "warn",
-            {
-                "maxLength": 32
-            }
-        ],
+        "private-vars-leading-underscore": ["warn", { "strict": true }],
+        "quotes": ["warn", "double"],
+        "reason-string": ["warn", { "maxLength": 32 }],
         "reentrancy": "warn",
         "state-visibility": "warn",
         "use-forbidden-name": "warn",

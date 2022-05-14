@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-npm install -g solhint
+npm install -g prettier prettier-plugin-solidity solhint
 
 git submodule update --init --recursive
 
