@@ -14,7 +14,7 @@ export FOUNDRY_PROFILE=$profile
 
 if [ -z "$test" ];
 then
-    forge test --match-path "tests/*";
+    forge test --match-path "tests/*" -o output;
 else
-    forge test --match "$test";
+    forge test --match "$test" -o output;
 fi
