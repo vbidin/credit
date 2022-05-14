@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-npm install -g prettier prettier-plugin-solidity solhint
+npm install -g husky lint-staged prettier prettier-plugin-solidity solhint
+husky install configs
 
 git submodule update --init --recursive
-
-# TODO: setup husky and lint-staged for auto-linting
