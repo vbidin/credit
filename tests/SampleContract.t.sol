@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// TODO: setup logging and assertions
+// TODO: Add submodules for logging and assertions.
 
-contract SampleContractTests { 
+contract LineOfCreditTests {
+    function setUp() external virtual {}
 
-    function setUp() public virtual { }
-
-    function test_success() external { }
-
+    function test_success() external {}
 }
