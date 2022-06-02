@@ -1,0 +1,6 @@
+name: CICD
+
+on:
+  push:
+    tags-ignore: [v*.*.*]
+    branches: [main]
