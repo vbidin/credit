@@ -1,8 +1,7 @@
 {
-    "bracketSpacing": true,
-    "explicitTypes": "never",
-    "printWidth": 160,
-    "singleQuote": false,
-    "tabWidth": 4,
-    "useTabs": false
+  "bracketSpacing": true,
+  "explicitTypes": "never",
+  "printWidth": 160,
+  "singleQuote": false,
+  "useTabs": false
 }
