@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo TODO
-
 # check formatting
 # check linting
 # build contracts
