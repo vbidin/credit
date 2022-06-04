@@ -49,12 +49,13 @@ interface ILineOfCredit {
 
     /// @notice Increases or decreases the available credit.
     /// @dev    In order to increase the credit assets must be transferred into the contract first (or approved).
-    ///         Decreasing credit causes assets to be removed from the contract.
+    ///         Decreasing credit causes assets to be transferred out of the contract.
     ///         Can only be called by the creditor.
     /// @param  adjustment Amount of assets to add or remove.
     /// @return credit     Credit available after the adjustment.
     function adjustCredit(int adjustment) external returns (uint credit);
 
+    // TODO: Aggregate all assets into a separate contract, setup permissioning and allowances on a per debtor basis.
     // TODO: Functions for increasing and decreasing available credit, used by the creditor.
     // TODO: Function for adjusting the debt ceiling (through what kind of mechanisms?).
     // TODO: Functions for borrowing and repaying, used by the debtor.
@@ -65,5 +66,4 @@ interface ILineOfCredit {
     // TODO: Functions that allow for collateral to be posted (initially and on demand) in order to increase the debt ceiling.
     // TODO: Function for retrieving unaccounted assets accidentally sent to the contract (send to lost and found, or treasury?).
     // TODO: Keep track of statistics of each creditor / debtor (better use The Graph for this).
-    // TODO: Add separate contract where all assets of debtor can be stored, with allowances on a per debtor basis?
 }
