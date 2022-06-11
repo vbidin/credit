@@ -1,10 +1,10 @@
 # Credit - Open-ended loans
 
-[![cicd](https://github.com/vbidin/credit/actions/workflows/cicd.yaml/badge.svg)](https://github.com/vbidin/credit/actions/workflows/cicd.yaml)
-[![npm](https://img.shields.io/npm/v/bidin/credit/latest.svg)](https://www.npmjs.com/package/bidin/credit/v/latest)
+[![cicd](https://github.com/vbidin/credit/actions/workflows/cicd.yaml/badge.svg)](https://github.com/vbidin/line-of-credit/actions/workflows/cicd.yaml)
+[![npm](https://img.shields.io/npm/v/bidin/credit/latest.svg)](https://www.npmjs.com/package/bidin/line-of-credit/v/latest)
 
-- repository description
-- link to latest deployment
+- description of the repository
+- link to latest testnet deployment
 
 ## Installation
 
@@ -14,16 +14,21 @@
 
 ## Development
 
-- submodule installation / update
-- formatting and linting
-- unit / fuzz / invariant testing
-- static analysis
+- setting up the repository
+- updating modules
+- building contracts
+- formatting / linting
 
-## Deployment
+- testing:
+  - unit tests
+  - fuzz tests
+  - invariants
 
-- deployment and verification
-- smoke tests
-- tag and publish
+- report generation:
+  - code coverage
+  - gas report
+  - documentation
+  - static analysis
 
 ## Documentation
 
