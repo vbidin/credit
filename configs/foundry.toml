@@ -1,20 +1,21 @@
 [default]
-contracts = 'contracts'
-test = 'tests'
-libs = ['modules']
-out = 'output'
+contracts  = 'contracts'
+test       = 'tests'
+libs       = ['modules']
+out        = 'output'
 cache_path = 'cache'
 
-solc_version = '0.8.13'
-evm_version = 'london'
-optimizer = true
+solc_version   = '0.8.15'
+evm_version    = 'london'
+optimizer      = true
 optimizer_runs = 4294967295
 
-block_number = 14736998
+block_number    = 14736998
 block_timestamp = 1652025761
-verbosity = 3
-fuzz_runs = 1000
+
+fuzz_runs   = 1000
 gas_reports = ['*']
+verbosity   = 3
 
 [deep]
 fuzz_runs = 10_000
