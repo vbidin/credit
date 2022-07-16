@@ -1,4 +1,4 @@
-# Mica - Personal Stablecoins
+# Mica
 
 [![cicd](https://github.com/vbidin/mica/actions/workflows/cicd.yaml/badge.svg)](https://github.com/vbidin/mica/actions/workflows/cicd.yaml)
 [![npm](https://img.shields.io/npm/v/bidin/mica/latest.svg)](https://www.npmjs.com/package/bidin/mica/v/latest)
