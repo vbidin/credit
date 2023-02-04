@@ -14,19 +14,18 @@ jobs:
 # check linting
 # build contracts
 
-# run unit/fuzz tests
-# check code coverage
+# run unit/fuzz tests and check code coverage
 # run invariant tests
 
 # generate code coverage report
 # generate gas report
-# generate static analysis report
 # generate docs from natspec
+# generate static analysis report
 
-# deploy to testnet (PoS)
-# verify on Etherscan
+# deploy to testnet
 # run smoke tests
+# verify on Etherscan
 
 # package sources, artifacts, reports, and documentation
-# tag with incremented version
+# increment version and tag
 # publish package on npm

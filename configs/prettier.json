@@ -1,6 +1,5 @@
 {
   "bracketSpacing": true,
-  "explicitTypes": "never",
   "printWidth": 160,
   "singleQuote": false,
   "useTabs": false
