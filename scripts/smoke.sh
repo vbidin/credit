@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-# TODO
+# TODO: Run smoke tests against deployed contracts.

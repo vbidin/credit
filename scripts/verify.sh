@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-# TODO
+# TODO: Verify deployed contracts on Etherscan.

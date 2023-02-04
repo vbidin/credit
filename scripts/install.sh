@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
-npm install -g husky lint-staged@11.2.6 prettier prettier-plugin-solidity solhint
+export FOUNDRY_CONFIG=./configs/foundry.toml
+
+curl -L https://foundry.paradigm.xyz | bash && foundryup
+npm install -g husky lint-staged prettier prettier-plugin-solidity solhint
+
 husky install configs
-git submodule update --init --recursive
+forge install

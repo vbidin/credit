@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-# TODO
+# TODO: Deploy to arbitrary network.
