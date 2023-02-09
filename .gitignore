@@ -1,6 +1,6 @@
 # Foundry
+artifacts/
 cache/
-output/
 
 # Visual Studio Code
 .vscode

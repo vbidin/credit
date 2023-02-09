@@ -12,7 +12,7 @@ export FOUNDRY_CONFIG=./configs/foundry.toml
 
 if [ -z "$test" ];
 then
-    forge test --match-path "tests/*" -o output;
+    forge test --match-path "tests/*";
 else
-    forge test --match "$test" -o output;
+    forge test --match "$test";
 fi

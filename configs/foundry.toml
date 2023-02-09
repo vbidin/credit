@@ -1,8 +1,8 @@
 [profile.default]
-contracts  = 'contracts'
+src        = 'contracts'
 test       = 'tests'
 libs       = ['modules']
-out        = 'output'
+out        = 'artifacts'
 cache_path = 'cache'
 
 solc_version   = '0.8.18'
