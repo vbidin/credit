@@ -1,6 +1,10 @@
 name: CICD
 
+# NOTE: Use different profiles for PR/main.
+
 on:
+  pull_request:
+    branches: [main]
   push:
     tags-ignore: [v*.*.*]
     branches: [main]
@@ -10,22 +14,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo TODO
-# check formatting
-# check linting
-# build contracts
 
-# run unit/fuzz tests and check code coverage
-# run invariant tests
+# - check formatter
+# - check linter
+# - build contracts (save artifacts)
 
-# generate code coverage report
-# generate gas report
-# generate docs from natspec
-# generate static analysis report
+# - run unit tests
+# - run fuzz tests
+# - run integration tests (always fork?)
+# - run invariant tests
 
-# deploy to testnet
-# run smoke tests
-# verify on Etherscan
+# if 'report' enabled:
+# - generate code coverage report
+# - generate gas report
+# - generate natspec docs
+# - generate static analysis report
 
-# package sources, artifacts, reports, and documentation
-# increment version and tag
-# publish package on npm
+# if 'deploy' enabled:
+# - deploy contracts to testnet
+# - verify contracts
+# - run sanity checks
+
+# if 'publish' enabled:
+# - create package (sources/artifacts/reports/docs)
+# - publish package to npm
+# - tag commit with version
