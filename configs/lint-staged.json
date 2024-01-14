@@ -1,3 +1,0 @@
-{
-  "*.sol": ["prettier --config configs/prettier.json --write", "solhint -c configs/solhint.json"]
-}
