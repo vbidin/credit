@@ -1,6 +1,6 @@
-name: CICD
+name: CI
 
-# NOTE: Use different profiles for PR/main.
+# NOTE: Use different profiles for PR's and main.
 
 on:
   pull_request:
@@ -21,7 +21,7 @@ jobs:
 
 # - run unit tests
 # - run fuzz tests
-# - run integration tests (always fork?)
+# - run integration tests
 # - run invariant tests
 
 # if 'report' enabled:

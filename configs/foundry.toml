@@ -5,13 +5,13 @@ libs       = ['modules']
 out        = 'artifacts'
 cache_path = 'cache'
 
-solc_version   = '0.8.19'
-evm_version    = 'london'
+solc_version   = '0.8.24'
+evm_version    = 'cancun'
 optimizer      = true
 optimizer_runs = 4294967295
 
-block_number    = 16557675
-block_timestamp = 1675541000
+block_number    = 19154184
+block_timestamp = 1707040439
 gas_limit       = "18446744073709551615"
 
 fuzz_runs   = 1000
