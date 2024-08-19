@@ -1,9 +1,14 @@
 # Foundry
 artifacts/
+broadcast/
 cache/
+out/
 
 # Visual Studio Code
 .vscode
 
 # MacOS
 .DS_Store
+
+# Environment variables
+.env

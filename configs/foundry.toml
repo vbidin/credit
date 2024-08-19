@@ -1,19 +1,66 @@
 [profile.default]
-src        = 'contracts'
-test       = 'tests'
-libs       = ['modules']
-out        = 'artifacts'
+
+# Project
+src = 'contracts'
+test = 'tests'
+script = 'scripts'
+libs = ['modules']
+out = 'artifacts'
 cache_path = 'cache'
+broadcast = 'broadcast'
 
-solc_version   = '0.8.24'
-evm_version    = 'cancun'
-optimizer      = true
+# Remappings
+auto_detect_remappings = false
+remappings = [
+    # add remappings here
+]
+
+# Solidity
+auto_detect_solc = true
+offline = false
+
+# Optimization
+optimizer = true
 optimizer_runs = 4294967295
+via_ir = true
 
-block_number    = 19154184
-block_timestamp = 1707040439
-gas_limit       = "18446744073709551615"
+# Testing
+ffi = false
+verbosity = 3
+block_number = 20000000
+block_timestamp = 1717281407
+chain_id = 31337
+gas_limit = '18446744073709551615'
+show_progress = true
 
-fuzz_runs   = 1000
-verbosity   = 3
-gas_reports = ['*']
+# Fuzzing
+fuzz_runs = 10_000
+seed = 69
+
+# Invariants
+fail_on_revert = true
+runs = 1_000
+depth = 1_000
+
+[fmt]
+
+# Formatting
+single_line_statement_blocks = 'multi'
+multiline_func_header = 'params_first'
+sort_imports = true
+contract_new_line = true
+override_spacing = false
+line_length = 160
+tab_width = 4
+bracket_spacing = false
+int_types = 'short'
+quote_style = 'single'
+number_underscore = 'thousands'
+wrap_comments = true
+
+[doc]
+
+# Documentation
+out = 'docs'
+title = 'Crypt'
+book = 'configs/book.toml'

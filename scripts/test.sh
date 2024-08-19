@@ -14,5 +14,5 @@ if [ -z "$test" ];
 then
     forge test --match-path "tests/*";
 else
-    forge test --match "$test";
+    forge test --match-test "$test";
 fi

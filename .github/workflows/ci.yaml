@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo TODO
-
 # - check formatter
 # - check linter
 # - build contracts (save artifacts)
+# - check contract sizes
 
 # - run unit tests
 # - run fuzz tests

@@ -3,7 +3,6 @@ set -e
 
 export FOUNDRY_CONFIG=./configs/foundry.toml
 
-npm upgrade -g prettier prettier-plugin-solidity solhint
-
+npm upgrade -g solhint
 foundryup
 forge update
