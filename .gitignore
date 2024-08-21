@@ -12,3 +12,6 @@ out/
 
 # Environment variables
 .env
+
+# Documentation
+docs/
