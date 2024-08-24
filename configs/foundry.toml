@@ -11,9 +11,7 @@ broadcast = 'broadcast'
 
 # Remappings
 auto_detect_remappings = false
-remappings = [
-    # add remappings here
-]
+remappings = ['@crypt=.', '@forge=./modules/forge-std/src']
 
 # Solidity
 auto_detect_solc = true
@@ -33,34 +31,11 @@ chain_id = 31337
 gas_limit = '18446744073709551615'
 show_progress = true
 
-# Fuzzing
-fuzz_runs = 10_000
+# Fuzzing (deterministic)
 seed = 69
+fuzz_runs = 10_000
 
 # Invariants
 fail_on_revert = true
 runs = 1_000
 depth = 1_000
-
-[fmt]
-
-# Formatting
-single_line_statement_blocks = 'multi'
-multiline_func_header = 'params_first'
-sort_imports = true
-contract_new_line = true
-override_spacing = false
-line_length = 160
-tab_width = 4
-bracket_spacing = false
-int_types = 'short'
-quote_style = 'single'
-number_underscore = 'thousands'
-wrap_comments = true
-
-[doc]
-
-# Documentation
-out = 'docs'
-title = 'Crypt'
-book = 'configs/book.toml'

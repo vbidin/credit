@@ -10,6 +10,7 @@
 
 - foundry
 - node
+- python
 
 ## Development
 
