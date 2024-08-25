@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-# TODO: Generate documentation from NatSpec (in format for exporting to GitBook).
+# TODO: Generate documentation from NatSpec and in format for export to GitBook.
