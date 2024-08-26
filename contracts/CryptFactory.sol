@@ -1,0 +1,92 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import { ICrypt } from '@crypt/interfaces/ICrypt.sol';
+import { ICryptFactory } from '@crypt/interfaces/ICryptFactory.sol';
+
+contract CryptFactory is ICryptFactory {
+
+    ////////////////////////////////////////////////////////////////////////////
+    // TYPES                                                                  //
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    // STATE                                                                  //
+    ////////////////////////////////////////////////////////////////////////////
+
+    address public immutable implementation;
+
+    mapping(address owner => address crypt) public cryptOf;
+
+    ////////////////////////////////////////////////////////////////////////////
+    // CONSTRUCTOR                                                            //
+    ////////////////////////////////////////////////////////////////////////////
+
+    constructor(address implementation_) {
+        implementation = implementation_;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // MODIFIERS                                                              //
+    ////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////
+    // EXTERNAL FUNCTIONS                                                     //
+    ////////////////////////////////////////////////////////////////////////////
+
+    function create(address owner) external returns (address crypt) {
+        crypt = cryptOf[owner];
+
+        if (crypt != address(0)) {
+            revert CryptExists(crypt);
+        }
+
+        crypt = createProxy(owner);
+
+        if (crypt == address(0)) {
+            // TODO: What are all the reasons `create2` can fail?
+            // NOTE: https://stackoverflow.com/a/74161700
+        }
+
+        if (!initializeProxy(crypt, owner)) {
+            // TODO: Revert if initialization fails.
+        }
+
+        cryptOf[owner] = crypt;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // INTERNAL FUNCTIONS                                                     //
+    ////////////////////////////////////////////////////////////////////////////
+
+    function createProxy(address owner) internal returns (address proxy) {
+        address target = implementation;
+        bytes32 salt = bytes32(bytes20(owner));
+
+        // Uses a `create2` variation of ERC-1167 to create minimal proxies.
+        // NOTE: https://eips.ethereum.org/EIPS/eip-1167
+        assembly {
+            mstore(
+                0x00,
+                or(
+                    shr(0xe8, shl(0x60, target)),
+                    0x3d602d80600a3d3981f3363d3d373d3d3d363d73000000
+                )
+            )
+            mstore(
+                0x20,
+                or(shl(0x78, target), 0x5af43d82803e903d91602b57fd5bf3)
+            )
+
+            proxy := create2(0, 0x09, 0x37, salt)
+        }
+    }
+
+    function initializeProxy(
+        address crypt,
+        address owner
+    ) internal returns (bool initialized) {
+        // TODO: Set the `owner` and `factory` values of the proxy.
+    }
+
+}
