@@ -6,16 +6,18 @@
 [![tools](https://img.shields.io/badge/Built%20with-Foundry-FFDB1C.svg)](https://book.getfoundry.sh/)
 [![license](https://img.shields.io/badge/License-MIT-white.svg)](https://github.com/vbidin/crypt/blob/main/LICENSE)
 
+## Overview
+
 ## Setup
 
-- foundry
-- node
-- python
+- Foundry
+- Node
+- Python
 
 ## Development
 
 - initializing repository
-- updating modules
+- updating submodules
 - building contracts
 - formatting and linting
 - testing: unit, fuzz, integration, invariant

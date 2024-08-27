@@ -26,6 +26,9 @@ contract CryptFactory is ICryptFactory {
     // EXTERNAL FUNCTIONS                                                     //
     ////////////////////////////////////////////////////////////////////////////
 
+    // TODO: Add `calls` and `deadline` to improve workflow.
+    // TODO: Add array of `permit()` signatures for instant approval of calls.
+    // TODO: Prevent anyone other than the `owner` from calling this function.
     function create(address owner) external returns (address crypt) {
         crypt = cryptOf[owner];
 
@@ -41,6 +44,8 @@ contract CryptFactory is ICryptFactory {
         }
 
         cryptOf[owner] = crypt;
+
+        // TODO: Also initialize with the `calls` and `deadline` as well.
         ICrypt(crypt).initialize(owner);
 
         emit CryptCreated(crypt, owner);
@@ -56,6 +61,8 @@ contract CryptFactory is ICryptFactory {
 
         // Uses a `create2` variation of ERC-1167 to create a minimal proxy.
         // NOTE: https://eips.ethereum.org/EIPS/eip-1167
+        // TODO: What are the pros/cons of `create2` compared to `create`?
+        // TODO: Can anyone else pre-deploy a malicious contract?
         assembly {
             mstore(
                 0x00,

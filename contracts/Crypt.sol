@@ -3,12 +3,15 @@ pragma solidity ^0.8.0;
 
 import { ICrypt } from '@crypt/interfaces/ICrypt.sol';
 
+// TODO: Rename to something else?
 contract Crypt is ICrypt {
 
     ////////////////////////////////////////////////////////////////////////////
     // CONSTANTS                                                              //
     ////////////////////////////////////////////////////////////////////////////
 
+    // TODO: Should this value be passed in during initialization?
+    //       Could fetch it from the factory contract as well.
     address constant multicall = 0xcA11bde05977b3631167028862bE2a173976CA11;
 
     ////////////////////////////////////////////////////////////////////////////
@@ -16,26 +19,35 @@ contract Crypt is ICrypt {
     ////////////////////////////////////////////////////////////////////////////
 
     address public owner;
+
+    // TODO: Rename `deadline` to something more intuitive.
     uint256 public deadline;
 
+    // TODO: Optimize by replacing `bool` with `uint256`.
     bool initialized;
     bool locked;
 
+    // TODO: Expose the array of calls publicly.
     Call[] calls;
 
     ////////////////////////////////////////////////////////////////////////////
     // INITIALIZATION                                                         //
     ////////////////////////////////////////////////////////////////////////////
 
+    // TODO: Also pass in `calls`, `deadline`, and `permit()` signatures.
+    //       This will allow for complete set up up with just ONE transaction.
     function initialize(address owner_) external notInitialized {
         owner = owner_;
         initialized = true;
+
+        emit Initialized(msg.sender, owner);
     }
 
     ////////////////////////////////////////////////////////////////////////////
     // MODIFIERS                                                              //
     ////////////////////////////////////////////////////////////////////////////
 
+    // TODO: Optimize initailization check.
     modifier notInitialized() {
         if (initialized) {
             revert AlreadyInitialized();
@@ -52,31 +64,22 @@ contract Crypt is ICrypt {
         _;
     }
 
+    // TODO: Optimize reentrancy guard.
     modifier nonReentrant() {
         if (locked) {
             revert ReentrancyDetected();
         }
 
         locked = true;
+
         _;
+
         locked = false;
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // EXTERNAL FUNCTIONS                                                     //
+    // MAIN FUNCTIONALITY                                                     //
     ////////////////////////////////////////////////////////////////////////////
-
-    function plan(Call[] calldata calls_) external onlyOwner {
-        updateCalls(calls_);
-    }
-
-    function prepare(uint256 deadline_) external onlyOwner {
-        if (deadline_ < block.timestamp) {
-            revert InvalidDeadline(deadline_);
-        }
-
-        updateDeadline(deadline_);
-    }
 
     function execute() external nonReentrant {
         uint256 callCount = calls.length;
@@ -104,13 +107,31 @@ contract Crypt is ICrypt {
             emit CallExecuted(call.target, call.callData, success, returnData);
         }
 
-        cleanupCalls();
+        deleteCalls();
         updateDeadline(0);
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // INTERNAL FUNCTIONS                                                     //
+    // CONFIGURATION                                                          //
     ////////////////////////////////////////////////////////////////////////////
+
+    function plan(Call[] calldata calls_) external onlyOwner {
+        updateCalls(calls_);
+    }
+
+    function prepare(uint256 deadline_) external onlyOwner {
+        updateDeadline(deadline_);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    // INTERNALS                                                              //
+    ////////////////////////////////////////////////////////////////////////////
+
+    function deleteCalls() internal {
+        delete calls;
+
+        emit CallsUpdated(new Call[](0));
+    }
 
     function updateCalls(Call[] calldata calls_) internal {
         calls = calls_;
@@ -118,13 +139,11 @@ contract Crypt is ICrypt {
         emit CallsUpdated(calls_);
     }
 
-    function cleanupCalls() internal {
-        delete calls;
-
-        emit CallsUpdated(new Call[](0));
-    }
-
     function updateDeadline(uint256 deadline_) internal {
+        if (deadline != 0 && deadline_ < block.timestamp) {
+            revert InvalidDeadline(deadline_);
+        }
+
         deadline = deadline_;
 
         emit DeadlineUpdated(deadline_);
