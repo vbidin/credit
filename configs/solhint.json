@@ -1,7 +1,7 @@
 {
   "rules": {
     "avoid-call-value": "warn",
-    "avoid-low-level-calls": "warn",
+    "avoid-low-level-calls": "off",
     "avoid-sha3": "warn",
     "avoid-suicide": "warn",
     "avoid-throw": "warn",
@@ -10,7 +10,7 @@
     "code-complexity": ["warn", 5],
     "compiler-version": ["warn", "^0.8.0"],
     "comprehensive-interface": "off",
-    "const-name-snakecase": "warn",
+    "const-name-snakecase": "off",
     "constructor-syntax": "warn",
     "contract-name-camelcase": "warn",
     "event-name-camelcase": "warn",
@@ -50,7 +50,7 @@
     "no-unused-import": "warn",
     "no-unused-vars": "warn",
     "not-rely-on-block-hash": "warn",
-    "not-rely-on-time": "warn",
+    "not-rely-on-time": "off",
     "one-contract-per-file": "warn",
     "ordering": "off",
     "payable-fallback": "warn",
@@ -58,7 +58,7 @@
     "quotes": ["warn", "single"],
     "reason-string": "off",
     "reentrancy": "warn",
-    "state-visibility": "warn",
+    "state-visibility": "off",
     "use-forbidden-name": "warn",
     "var-name-mixedcase": "warn",
     "visibility-modifier-order": "warn"

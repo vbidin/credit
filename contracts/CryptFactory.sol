@@ -7,10 +7,6 @@ import { ICryptFactory } from '@crypt/interfaces/ICryptFactory.sol';
 contract CryptFactory is ICryptFactory {
 
     ////////////////////////////////////////////////////////////////////////////
-    // TYPES                                                                  //
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
     // STATE                                                                  //
     ////////////////////////////////////////////////////////////////////////////
 
@@ -27,10 +23,6 @@ contract CryptFactory is ICryptFactory {
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    // MODIFIERS                                                              //
-    ////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////
     // EXTERNAL FUNCTIONS                                                     //
     ////////////////////////////////////////////////////////////////////////////
 
@@ -45,14 +37,13 @@ contract CryptFactory is ICryptFactory {
 
         if (crypt == address(0)) {
             // TODO: What are all the reasons `create2` can fail?
-            // NOTE: https://stackoverflow.com/a/74161700
-        }
-
-        if (!initializeProxy(crypt, owner)) {
-            // TODO: Revert if initialization fails.
+            //       https://stackoverflow.com/a/74161700
         }
 
         cryptOf[owner] = crypt;
+        ICrypt(crypt).initialize(owner);
+
+        emit CryptCreated(crypt, owner);
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -63,7 +54,7 @@ contract CryptFactory is ICryptFactory {
         address target = implementation;
         bytes32 salt = bytes32(bytes20(owner));
 
-        // Uses a `create2` variation of ERC-1167 to create minimal proxies.
+        // Uses a `create2` variation of ERC-1167 to create a minimal proxy.
         // NOTE: https://eips.ethereum.org/EIPS/eip-1167
         assembly {
             mstore(
@@ -80,13 +71,6 @@ contract CryptFactory is ICryptFactory {
 
             proxy := create2(0, 0x09, 0x37, salt)
         }
-    }
-
-    function initializeProxy(
-        address crypt,
-        address owner
-    ) internal returns (bool initialized) {
-        // TODO: Set the `owner` and `factory` values of the proxy.
     }
 
 }
